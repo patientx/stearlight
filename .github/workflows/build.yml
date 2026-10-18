@@ -53,6 +53,8 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - name: Assemble the clean ARM64 runtime and KDE desktop
         run: sudo --preserve-env=DOCKER_CONFIG bash build_files/quest/build-rootfs.sh "$PWD/rootfs-output"
+      - name: List rootfs tarball contents (diagnostic)
+        run: tar --zstd -tvf rootfs-output/frame-rootfs.tar.zst | grep -E 'bin/bbsuid|^d' | head -50
       - uses: actions/upload-artifact@v4
         with:
           name: quest-build-rootfs
@@ -108,7 +110,32 @@ jobs:
           mkdir quest-root
           tar --zstd -xf rootfs-input/frame-rootfs.tar.zst -C quest-root
           rm rootfs-input/frame-rootfs.tar.zst
-          chmod -R +r quest-root
+          chmod -R u+rwX quest-root
+          find quest-root -type d -exec chmod u+x {} +
+      - name: Diagnose quest-root permissions
+        run: |
+          echo "=== quest-root top-level ==="
+          ls -la quest-root || true
+          echo "=== bin directory ==="
+          ls -la quest-root/bin || true
+          echo "=== target file ==="
+          ls -la quest-root/bin/bbsuid || echo "bbsuid NOT PRESENT"
+          echo "=== id / umask ==="
+          id
+          umask
+          echo "=== test read ==="
+          test -r quest-root/bin/bbsuid && echo "readable" || echo "NOT readable"
+          echo "=== test open (python) ==="
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("quest-root/bin/bbsuid")
+          print("exists:", p.exists())
+          try:
+              with p.open("rb") as f:
+                  print("opened OK, first bytes:", f.read(4))
+          except Exception as e:
+              print("open failed:", repr(e))
+          PY
       - name: Build the Linux adapters, GPU drivers and complete payload
         run: |
           python3 -m venv --system-site-packages quest-tools
