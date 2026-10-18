@@ -6,7 +6,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libopenal1 libpulse0 libsdl2-2.0-0 libssh2-1 libssl3 libsystemd0 \
     libvulkan1 mesa-vulkan-drivers \
     libx11-6 libx11-xcb1 libxcomposite1 libxdamage1 libxfixes3 \
-    libxrandr2 libxss1 libxtst6 && rm -rf /var/lib/apt/lists/*
+    libxrandr2 libxss1 libxtst6 \
+    libxcb-shape0 libxcb-render0 libxcb-shm0 libxcb-glx0 libxcb-dri2-0 \
+    libxcb-dri3-0 libxcb-present0 libxcb-randr0 libxcb-sync1 libxcb-xfixes0 \
+    libxshmfence1 libxrender1 libxxf86vm1 libxext6 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Steam Frame's extracted Steam Runtime Vulkan loader requires GLIBC_2.38.
 # Keep the Debian Bookworm graphics package stage, but supply a newer glibc
