@@ -108,6 +108,7 @@ jobs:
           mkdir quest-root
           tar --zstd -xf rootfs-input/frame-rootfs.tar.zst -C quest-root
           rm rootfs-input/frame-rootfs.tar.zst
+          chmod -R +r quest-root
       - name: Build the Linux adapters, GPU drivers and complete payload
         run: |
           python3 -m venv --system-site-packages quest-tools
