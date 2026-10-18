@@ -83,7 +83,7 @@ FROM --platform=$TARGETPLATFORM alpine:edge AS rootfs
 # BusyBox's lsof applet cannot supply that protocol and causes HTTP 403.
 RUN apk add --no-cache alpine-base bash coreutils curl git nano dbus dbus-x11 e2fsprogs \
     eudev eudev-openrc udev-init-scripts-openrc \
-    font-dejavu font-noto-all font-noto-cjk font-noto-emoji grim linux-firmware-none linux-lts bluez bluez-openrc linux-tools-usbip \
+    font-dejavu font-noto-cjk font-noto-emoji grim linux-firmware-none linux-lts bluez bluez-openrc linux-tools-usbip \
     lsof mesa-dri-gallium mesa-egl mesa-vulkan-virtio \
     mesa-vulkan-swrast mpv networkmanager networkmanager-cli networkmanager-openrc \
     pulseaudio pulseaudio-utils seatd util-linux-misc vulkan-loader xorg-server \
