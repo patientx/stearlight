@@ -37,8 +37,8 @@
   },
   "linux": {
     "xvfb": {
-      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/community/aarch64/xvfb-21.1.24-r0.apk",
-      "sha256": "c9329333d980fc60fb3ce1f55d048f231b2dbc0811e87202ae75ba757aa01426"
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/community/aarch64/xvfb-21.1.25-r0.apk",
+      "sha256": "331d5b08ef3e7c1b9574e04ecb2e61aa4834b401e30f98ecb1b292e7c52ba488"
     },
     "xfont": {
       "url": "https://dl-cdn.alpinelinux.org/alpine/edge/community/aarch64/libxfont2-2.0.8-r0.apk",
