@@ -79,7 +79,8 @@ jobs:
             libdbus-1-dev libdrm-dev libpam0g-dev libglvnd-dev libx11-dev libx11-xcb-dev libxext-dev \
             libxrandr-dev libxxf86vm-dev libxcb-glx0-dev libxcb-shm0-dev libxcb-dri2-0-dev libxcb-dri3-dev \
             libxcb-randr0-dev libxcb-render0-dev libxcb-shape0-dev libxrender-dev \
-            libxcb-present-dev libxcb-sync-dev libxcb-xfixes0-dev libxshmfence-dev python3-venv python3-packaging
+            libxcb-present-dev libxcb-sync-dev libxcb-xfixes0-dev libxshmfence-dev python3-venv python3-packaging \
+            python3-mako python3-yaml
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
