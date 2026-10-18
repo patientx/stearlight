@@ -23,8 +23,8 @@
   },
   "android": {
     "proot": {
-      "url": "https://packages.termux.dev/apt/termux-main/pool/main/p/proot/proot_5.1.107.96_aarch64.deb",
-      "sha256": "8199dca06dccb693ec09fb1759e3e1ad08b4863f0c11c612f89c20bd9ecdc1a0"
+      "url": "https://packages.termux.dev/apt/termux-main/pool/main/p/proot/proot_5.1.107.97_aarch64.deb",
+      "sha256": "a368d879876b1458b03d3936f7b75f94875eca9ece4c5870acf24993648fd94"
     },
     "talloc": {
       "url": "https://packages.termux.dev/apt/termux-main/pool/main/libt/libtalloc/libtalloc_2.5.0_aarch64.deb",
