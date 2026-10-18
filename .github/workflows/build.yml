@@ -159,6 +159,19 @@ jobs:
           gradle -p packages/quest-runtime --no-daemon --console=plain \
             -PquestPayload="$PWD/quest-payload" -PquestBuildDir="$PWD/quest-apk-build" \
             "${signing[@]}" :app:assembleDebug
+
+      # ---------- NEW: start ----------
+      - name: Show APK size
+        run: ls -l quest-apk-build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stearlight-quest-raw-apk
+          path: quest-apk-build/outputs/apk/debug/app-debug.apk
+          compression-level: 0
+          retention-days: 7
+          if-no-files-found: error
+      # ---------- NEW: end ----------
+            
       - name: Verify the APK signature and package downloadable files
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose quest-apk-build/outputs/apk/debug/app-debug.apk
